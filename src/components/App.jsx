@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import Layout from './Layout/Layout';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Contacts from 'pages/Contacts';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/operations';
+// import { useDispatch } from 'react-redux';
+// import { fetchContacts } from 'redux/contacts/operations';
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(fetchContacts());
   // }, [dispatch]);

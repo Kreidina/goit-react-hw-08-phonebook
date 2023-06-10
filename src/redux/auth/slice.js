@@ -12,14 +12,14 @@ const initialState = {
 const arrayFetch = [fetchCreateUser, fetchLogin, fetchLogout];
 const chooseFetch = type => arrayFetch.map(fetch => fetch[type]);
 
-const handelPending = state => (state.isLoading = true);
+// const handelPending = state => (state.isLoading = true);
 
-const handelRejected = (state, { payload }) => {
-  state.error = payload;
-  state.isLoading = false;
-};
+// const handelRejected = (state, { payload }) => {
+//   state.error = payload;
+//   state.isLoading = false;
+// };
 
-const handelFulfilled = (state, { payload }) => {
+const handelFulfilled = state => {
   state.isLoading = false;
   state.error = '';
 };
@@ -35,7 +35,7 @@ const fulfilledLogin = (state, { payload }) => {
   state.token = payload.token;
   state.isLoggedIn = true;
 };
-const fulfilledLogout = (state, { payload }) => {
+const fulfilledLogout = state => {
   state.isLoggedIn = false;
 };
 
