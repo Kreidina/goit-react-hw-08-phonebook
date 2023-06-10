@@ -1,19 +1,24 @@
-// import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import { Button, ButtonGroup } from '@chakra-ui/react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-// const AutNav = () => {
-//   return (
-//     <div>
-//       <ul>
-//         <li>
-//           <NavLink to="/register">Register</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/login">Login</NavLink>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
+const AutNav = () => {
+  return (
+    <>
+      <ButtonGroup gap="2">
+        <NavLink to="/register">
+          <Button h="var(--chakra-sizes-7)" colorScheme="teal">
+            Sign Up
+          </Button>
+        </NavLink>
+        <NavLink to="/login">
+          <Button h="var(--chakra-sizes-7)" colorScheme="teal">
+            Log in
+          </Button>
+        </NavLink>
+      </ButtonGroup>
+    </>
+  );
+};
 
-// export default AutNav;
+export default AutNav;
