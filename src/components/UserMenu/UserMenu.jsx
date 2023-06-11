@@ -9,8 +9,13 @@ const UserMenu = () => {
   return (
     <div>
       <Flex minWidth="max-content" alignItems="center" gap="2">
-        <Avatar name={user.name} src="https://bit.ly/broken-link" />
-        <p>Welcome {user.name}</p>
+        <Avatar
+          w="30px"
+          h="30px"
+          name={user.name}
+          src="https://bit.ly/broken-link"
+        />
+        <p>Welcome, {user.name}</p>
         <NavLink to="/">
           <Button colorScheme="teal" h="var(--chakra-sizes-7)">
             Log out
