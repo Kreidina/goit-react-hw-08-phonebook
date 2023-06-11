@@ -1,15 +1,59 @@
-// const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
-// const {
-//   fetchContacts,
-//   addNewContact,
-//   deleteContacts,
-// } = require('./operations');
+const { createSlice } = require('@reduxjs/toolkit');
+const {
+  fetchContacts,
+  addNewContact,
+  deleteContacts,
+} = require('./operations');
 
-// const initialState = {
-//   items: [],
-//   isLoading: false,
-//   error: '',
-// };
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: '',
+};
+
+const contactsSlice = createSlice({
+  name: 'contacts',
+  initialState,
+  extraReducers: {
+    [fetchContacts.pending](state) {
+      state.isLoading = true;
+    },
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.items = action.payload;
+      state.error = '';
+    },
+    [fetchContacts.rejected](state) {
+      state.isLoading = false;
+    },
+
+    ///////////////////
+    [addNewContact.pending](state) {
+      state.isLoading = true;
+    },
+    [addNewContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.items.push(action.payload);
+      state.error = '';
+    },
+    [addNewContact.rejected](state) {
+      state.isLoading = false;
+    },
+
+    ///////////////////
+    [deleteContacts.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteContacts.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.items.filter(item => item.id !== payload.id);
+      state.error = '';
+    },
+    [deleteContacts.rejected](state) {
+      state.isLoading = false;
+    },
+  },
+});
 
 // const arrayThunks = [fetchContacts, addNewContact, deleteContacts];
 // const chooseType = type => arrayThunks.map(thunk => thunk[type]);
@@ -54,4 +98,4 @@
 //   },
 // });
 
-// export const contactsReducer = contactsSlice.reducer;
+export const contactsReducer = contactsSlice.reducer;

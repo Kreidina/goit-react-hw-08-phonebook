@@ -8,7 +8,6 @@ import { selectisLoggedIn } from 'redux/auth/selectors';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectisLoggedIn);
-  console.log(isLoggedIn);
 
   return (
     <>

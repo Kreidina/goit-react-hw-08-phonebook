@@ -7,7 +7,8 @@ import { selectisLoggedIn } from 'redux/auth/selectors';
 const HomePages = () => {
   const isLoggedIn = useSelector(selectisLoggedIn);
   return (
-    <div className={css.homeContainer}>
+    <section className={css.hero}>
+      {/* <div className={css.homeContainer}> */}
       <div className={css.content}>
         <Text
           fontSize="7xl"
@@ -28,7 +29,8 @@ const HomePages = () => {
           </ButtonGroup>
         )}
       </div>
-    </div>
+      {/* </div> */}
+    </section>
   );
 };
 

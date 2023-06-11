@@ -1,8 +1,13 @@
 import { Text } from '@chakra-ui/react';
 import css from './ContactsList.module.css';
 import Filter from 'components/Filter/Filter';
+import { useSelector } from 'react-redux';
+import { selectVisibleContacts } from 'redux/contacts/selectors';
+import ContactsItem from 'components/ContactsItem/ContactsItem';
 
 const ContactsList = () => {
+  const contacts = useSelector(selectVisibleContacts);
+
   return (
     <>
       <Text
@@ -15,17 +20,15 @@ const ContactsList = () => {
         Contacts
       </Text>
       <Filter />
-      {/* {visibleContacts.length !== 0 ? ( */}
-      <ul className={css.contactList}>
-        {/* {visibleContacts.map(({ name, phone, id }) => { */}
-        {/* return <ContactItem name={name} number={phone} key={id} id={id} />; */}
-        {/* })} */}
-      </ul>
-      {/* ) : ( */}
-      {/* !isLoading && (
-        <p className={css.message}>There is no contact with that name</p>
-      ) */}
-      {/* )} */}
+      {contacts.length !== 0 && (
+        <ul className={css.contactList}>
+          {contacts.map(({ name, number, id }) => {
+            return (
+              <ContactsItem name={name} number={number} key={id} id={id} />
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };

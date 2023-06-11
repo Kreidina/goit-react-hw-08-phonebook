@@ -29,6 +29,9 @@ const LoginForm = () => {
         <Input
           type="email"
           name="email"
+          _placeholder={{
+            color: 'var(--chakra-colors-teal-500)',
+          }}
           placeholder="Enter email"
           id={emailId}
         />
@@ -37,15 +40,13 @@ const LoginForm = () => {
           pr="4.5rem"
           type="password"
           name="password"
+          _placeholder={{
+            color: 'var(--chakra-colors-teal-500)',
+          }}
           placeholder="Enter password"
           id={passwordId}
         />
-        <Button
-          mt={4}
-          colorScheme="teal"
-          // isLoading={props.isSubmitting}
-          type="submit"
-        >
+        <Button mt={4} colorScheme="teal" type="submit">
           Submit
         </Button>
       </form>
