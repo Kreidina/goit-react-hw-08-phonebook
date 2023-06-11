@@ -12,6 +12,26 @@ const token = {
   },
 };
 
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.token;
+
+    if (persistToken === '') {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (e) {
+      console.log(e.message);
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const fetchCreateUser = createAsyncThunk(
   'user/createUser',
   async credentials => {
