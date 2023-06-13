@@ -1,12 +1,11 @@
 import { Avatar, Button, Flex } from '@chakra-ui/react';
+import { useAuth } from 'hooks';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { fetchUserLogout } from 'redux/auth/operations';
-import { selectUser } from 'redux/auth/selectors';
 
 const UserMenu = () => {
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
   const dispatch = useDispatch();
   return (
     <div>
@@ -18,15 +17,13 @@ const UserMenu = () => {
           src="https://bit.ly/broken-link"
         />
         <p>Welcome, {user.name}</p>
-        <NavLink to="/">
-          <Button
-            colorScheme="teal"
-            h="var(--chakra-sizes-7)"
-            onClick={() => dispatch(fetchUserLogout())}
-          >
-            Log out
-          </Button>
-        </NavLink>
+        <Button
+          colorScheme="teal"
+          h="var(--chakra-sizes-7)"
+          onClick={() => dispatch(fetchUserLogout())}
+        >
+          Log out
+        </Button>
       </Flex>
     </div>
   );

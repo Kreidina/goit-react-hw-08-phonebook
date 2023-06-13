@@ -1,12 +1,11 @@
 import { Text } from '@chakra-ui/react';
 import css from './ContactsList.module.css';
 import Filter from 'components/Filter/Filter';
-import { useSelector } from 'react-redux';
-import { selectVisibleContacts } from 'redux/contacts/selectors';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
+import { useContacts } from 'hooks';
 
 const ContactsList = () => {
-  const contacts = useSelector(selectVisibleContacts);
+  const { contacts } = useContacts();
 
   return (
     <>

@@ -12,9 +12,13 @@ const ContactForm = () => {
   const submitContact = e => {
     e.preventDefault();
     const form = e.target;
-    const name = form.elements.name.value;
-    const number = form.elements.number.value;
-    dispatch(addNewContact({ name, number, id: nanoid() }));
+    dispatch(
+      addNewContact({
+        name: form.elements.name.value,
+        number: form.elements.number.value,
+        id: nanoid(),
+      })
+    );
     form.reset();
   };
 

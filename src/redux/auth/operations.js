@@ -18,7 +18,7 @@ export const fetchCurrentUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistToken = state.auth.token;
 
-    if (persistToken === '') {
+    if (!persistToken) {
       return thunkAPI.rejectWithValue();
     }
     token.set(persistToken);

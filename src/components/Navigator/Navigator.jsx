@@ -1,11 +1,10 @@
 import { Flex } from '@chakra-ui/react';
+import { useAuth } from 'hooks';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { selectisLoggedIn } from 'redux/auth/selectors';
 
 const Navigator = () => {
-  const isLoggedIn = useSelector(selectisLoggedIn);
+  const { isLoggedIn } = useAuth();
   return (
     <div style={{ listStyle: 'none' }}>
       <Flex minWidth="max-content" alignItems="center" gap="2">

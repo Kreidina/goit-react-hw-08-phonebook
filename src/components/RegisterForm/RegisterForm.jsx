@@ -8,16 +8,17 @@ const RegisterForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
   const dispatch = useDispatch();
-  // const contacts = useSelector(selectContacts);
 
   const submitRegistration = e => {
     e.preventDefault();
     const form = e.target;
-    const name = form.elements.name.value;
-    const email = form.elements.email.value;
-    const password = form.elements.password.value;
-    const newUsers = { name, email, password };
-    dispatch(fetchCreateUser(newUsers));
+    dispatch(
+      fetchCreateUser({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
     form.reset();
   };
 
@@ -56,12 +57,7 @@ const RegisterForm = () => {
             placeholder="Enter password"
             id={passwordId}
           />
-          <Button
-            mt={4}
-            colorScheme="teal"
-            // isLoading={props.isSubmitting}
-            type="submit"
-          >
+          <Button mt={4} colorScheme="teal" type="submit">
             Submit
           </Button>
         </form>

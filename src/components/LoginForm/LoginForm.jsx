@@ -12,12 +12,12 @@ const LoginForm = () => {
   const submitLogin = e => {
     e.preventDefault();
     const form = e.target;
-
-    const email = form.elements.email.value;
-    const password = form.elements.password.value;
-
-    const login = { email, password };
-    dispatch(fetchLogin(login));
+    dispatch(
+      fetchLogin({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
 
     form.reset();
   };

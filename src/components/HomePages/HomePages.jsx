@@ -1,11 +1,10 @@
 import { Button, ButtonGroup, Text } from '@chakra-ui/react';
 import css from './HomePages.module.css';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectisLoggedIn } from 'redux/auth/selectors';
+import { useAuth } from 'hooks';
 
 const HomePages = () => {
-  const isLoggedIn = useSelector(selectisLoggedIn);
+  const { isLoggedIn } = useAuth();
   return (
     <section className={css.hero}>
       {/* <div className={css.homeContainer}> */}
