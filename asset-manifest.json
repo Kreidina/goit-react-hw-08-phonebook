@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.327fac7d.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.17487cdd.js",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.5246a1ea.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.dedd03f8.js",
+    "static/css/309.7117bc78.chunk.css": "/goit-react-hw-08-phonebook/static/css/309.7117bc78.chunk.css",
+    "static/js/309.f96c17a3.chunk.js": "/goit-react-hw-08-phonebook/static/js/309.f96c17a3.chunk.js",
+    "static/js/690.4e21a784.chunk.js": "/goit-react-hw-08-phonebook/static/js/690.4e21a784.chunk.js",
+    "static/js/665.6d545614.chunk.js": "/goit-react-hw-08-phonebook/static/js/665.6d545614.chunk.js",
+    "static/css/804.31d6cfe0.chunk.css": "/goit-react-hw-08-phonebook/static/css/804.31d6cfe0.chunk.css",
+    "static/js/804.8e35dbf2.chunk.js": "/goit-react-hw-08-phonebook/static/js/804.8e35dbf2.chunk.js",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.327fac7d.css.map": "/goit-react-hw-08-phonebook/static/css/main.327fac7d.css.map",
-    "main.17487cdd.js.map": "/goit-react-hw-08-phonebook/static/js/main.17487cdd.js.map"
+    "main.5246a1ea.css.map": "/goit-react-hw-08-phonebook/static/css/main.5246a1ea.css.map",
+    "main.dedd03f8.js.map": "/goit-react-hw-08-phonebook/static/js/main.dedd03f8.js.map",
+    "309.7117bc78.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/309.7117bc78.chunk.css.map",
+    "309.f96c17a3.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/309.f96c17a3.chunk.js.map",
+    "690.4e21a784.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/690.4e21a784.chunk.js.map",
+    "665.6d545614.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/665.6d545614.chunk.js.map",
+    "804.8e35dbf2.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/804.8e35dbf2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.327fac7d.css",
-    "static/js/main.17487cdd.js"
+    "static/css/main.5246a1ea.css",
+    "static/js/main.dedd03f8.js"
   ]
 }
