@@ -8,9 +8,9 @@ const Filter = () => {
     <FormLabel>
       Find contacts by name
       <Input
-        _placeholder={{
-          color: 'var(--chakra-colors-teal-500)',
-        }}
+        // _placeholder={{
+        //   color: 'var(--chakra-colors-teal-500)',
+        // }}
         placeholder="Enter name"
         type="text"
         name="name"

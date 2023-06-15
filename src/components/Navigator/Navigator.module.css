@@ -1,0 +1,15 @@
+.navigator {
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+  gap: 10px;
+  font-family: 'Bagel Fat One', cursive;
+  font-size: var(--chakra-blur-xl);
+  @media screen and (max-width: 480px) {
+    display: block;
+    font-size: var(--chakra-blur-m);
+  }
+}
+.active {
+  color: var(--chakra-colors-teal-500);
+}

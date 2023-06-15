@@ -34,8 +34,8 @@ const fulfilledAdd = (state, { payload }) => {
 
 const fulfilledDelete = (state, { payload }) => {
   state.isLoading = false;
-  state.items.filter(item => item.id !== payload.id);
   state.error = '';
+  state.items = state.items.filter(item => item.id !== payload.id);
 };
 
 const contactsSlice = createSlice({

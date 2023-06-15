@@ -28,9 +28,9 @@ const RegisterForm = () => {
         <form onSubmit={submitRegistration}>
           <FormLabel htmlFor={nameId}>User name</FormLabel>
           <Input
-            _placeholder={{
-              color: 'var(--chakra-colors-teal-500)',
-            }}
+            // _placeholder={{
+            //   color: 'var(--chakra-colors-teal-500)',
+            // }}
             placeholder="Enter name"
             id={nameId}
             type="text"
@@ -40,9 +40,9 @@ const RegisterForm = () => {
           <Input
             type="email"
             name="email"
-            _placeholder={{
-              color: 'var(--chakra-colors-teal-500)',
-            }}
+            // _placeholder={{
+            //   color: 'var(--chakra-colors-teal-500)',
+            // }}
             placeholder="Enter email"
             id={emailId}
           />
@@ -51,9 +51,9 @@ const RegisterForm = () => {
             pr="4.5rem"
             type="password"
             name="password"
-            _placeholder={{
-              color: 'var(--chakra-colors-teal-500)',
-            }}
+            // _placeholder={{
+            //   color: 'var(--chakra-colors-teal-500)',
+            // }}
             placeholder="Enter password"
             id={passwordId}
           />

@@ -34,13 +34,14 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const fetchCreateUser = createAsyncThunk(
   'user/createUser',
-  async credentials => {
+  async (credentials,thunkAPI) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
       return data;
     } catch (e) {
       console.log(e.message);
+       return thunkAPI.rejectWithValue(e.message);
     }
   }
 );

@@ -10,6 +10,7 @@ const HomePages = () => {
       {/* <div className={css.homeContainer}> */}
       <div className={css.content}>
         <Text
+          className={css.title}
           fontSize="7xl"
           ml="10px"
           textShadow="1px 2px #319795"
@@ -18,12 +19,22 @@ const HomePages = () => {
           phonebook
         </Text>
         {!isLoggedIn && (
-          <ButtonGroup gap="2" ml=" 108">
+          <ButtonGroup
+            className={css.buttonGroup}
+            gap="2"
+            display=" block"
+            maxWidth=" 200px"
+            margin=" auto"
+          >
             <NavLink to="/register">
-              <Button colorScheme="teal">Sign Up</Button>
+              <Button colorScheme="teal" className={css.button}>
+                Sign Up
+              </Button>
             </NavLink>
             <NavLink to="/login">
-              <Button colorScheme="teal">Log in</Button>
+              <Button colorScheme="teal" className={css.button}>
+                Log in
+              </Button>
             </NavLink>
           </ButtonGroup>
         )}

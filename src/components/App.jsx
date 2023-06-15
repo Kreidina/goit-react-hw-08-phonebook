@@ -13,7 +13,10 @@ const Register = lazy(() => import('pages/Register'));
 const Contacts = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
-  // const { isRefreshing } = useAuth();
+  // const { isRefreshing, isLoggedIn } = useAuth();
+  // console.log(isRefreshing, 'isRefreshing');
+  // console.log(isLoggedIn, 'isLoggedIn');
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -40,7 +43,9 @@ export const App = () => {
             />
             <Route
               path="/contacts"
-              element={<PrivateRoute component={Contacts} redirectTo="/" />}
+              element={
+                <PrivateRoute component={Contacts} redirectTo="/login" />
+              }
             />
           </Route>
         </Routes>
