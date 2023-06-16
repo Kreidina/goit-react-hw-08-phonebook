@@ -4,8 +4,8 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
 // import { useAuth } from 'hooks';
-// import { RegistretedRoute } from './RegistretedRoute';
-// import { PrivateRoute } from './PrivateRoute';
+import { RegistretedRoute } from './RegistretedRoute';
+import { PrivateRoute } from './PrivateRoute';
 import { Box } from '@chakra-ui/react';
 
 const Home = lazy(() => import('pages/Home'));
@@ -25,28 +25,25 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/contacts" element={<Contacts />} />
 
-            {/* <Route
+            <Route
               path="/login"
               element={
                 <RegistretedRoute component={Login} redirectTo="/contacts" />
               }
-            /> */}
-            {/* <Route
+            />
+            <Route
               path="/register"
               element={
                 <RegistretedRoute component={Register} redirectTo="/contacts" />
               }
-            /> */}
-            {/* <Route
+            />
+            <Route
               path="/contacts"
               element={
                 <PrivateRoute component={Contacts} redirectTo="/login" />
               }
-            /> */}
+            />
           </Route>
         </Routes>
       </Box>
