@@ -5,7 +5,7 @@ import {
   FormLabel,
   Input,
 } from '@chakra-ui/react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import {  Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { fetchCreateUser } from 'redux/auth/operations';
 // import { object, string } from 'yup';
