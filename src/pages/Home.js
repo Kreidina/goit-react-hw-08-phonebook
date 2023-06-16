@@ -1,8 +1,7 @@
-import HomePages from 'components/HomePages/HomePages';
+import HomePages from 'components/HomePages';
 import React from 'react';
 
 const Home = () => {
-  console.log('home');
   return (
     <>
       <HomePages />

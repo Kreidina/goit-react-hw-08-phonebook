@@ -1,8 +1,7 @@
 import { Box, Divider, Flex, Spacer } from '@chakra-ui/react';
-// import css from './Header.module.css';
-import Navigator from 'components/Navigator/Navigator';
-import UserMenu from 'components/UserMenu/UserMenu';
-import AutNav from 'components/AutNav/AutNav';
+import Navigator from 'components/Navigator';
+import UserMenu from 'components/UserMenu';
+import AutNav from 'components/AutNav';
 import { useAuth } from 'hooks';
 
 const Header = () => {
@@ -17,7 +16,14 @@ const Header = () => {
         <Spacer />
         {isLoggedIn ? <UserMenu /> : <AutNav />}
       </Flex>
-      <Divider mb="10px" />
+      <Divider
+        mb="10px"
+        sx={{
+          '@media screen and (max-width: 480px)': {
+            mt: '10px',
+          },
+        }}
+      />
     </>
   );
 };

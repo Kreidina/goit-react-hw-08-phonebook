@@ -1,5 +1,5 @@
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactsList from 'components/ContactsList/ContactsList';
+import ContactForm from 'components/ContactForm';
+import ContactsList from 'components/ContactsList';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -7,7 +7,6 @@ import { fetchContacts } from 'redux/contacts/operations';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-console.log('contats');
 
   useEffect(() => {
     dispatch(fetchContacts());

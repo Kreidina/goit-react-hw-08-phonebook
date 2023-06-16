@@ -1,18 +1,24 @@
-import { Avatar, Button } from '@chakra-ui/react';
+import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
 import { useAuth } from 'hooks';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUserLogout } from 'redux/auth/operations';
-import css from './UserMenu.module.css';
 
 const UserMenu = () => {
   const { user } = useAuth();
   const dispatch = useDispatch();
   return (
     <>
-      <div className={css.userMenu}>
-        {/* <Flex minWidth="max-content" alignItems="center" gap="2"> */}
-        <div className={css.welcome}>
+      <Flex
+        minWidth="max-content"
+        alignItems="center"
+        gap="2"
+        sx={{
+          '@media screen and (max-width: 480px)': {
+            display: 'block',
+          },
+        }}
+      >
+        <Box display="flex" alignItems="center" m="4px 0 8px">
           <Avatar
             w="30px"
             h="30px"
@@ -20,14 +26,8 @@ const UserMenu = () => {
             name={user.name}
             src="https://bit.ly/broken-link"
           />
-          <p
-            style={{
-              fontFamily: 'Courgette, cursive',
-            }}
-          >
-            Welcome, {user.name}
-          </p>
-        </div>
+          <Text fontFamily="Courgette, cursive">Welcome, {user.name}</Text>
+        </Box>
         <Button
           colorScheme="teal"
           h="var(--chakra-sizes-7)"
@@ -36,8 +36,7 @@ const UserMenu = () => {
         >
           Log out
         </Button>
-      </div>
-      {/* </Flex> */}
+      </Flex>
     </>
   );
 };

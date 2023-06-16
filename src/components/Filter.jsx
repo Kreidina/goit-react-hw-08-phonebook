@@ -5,12 +5,9 @@ import { filterChange } from 'redux/contacts/filterSlise';
 const Filter = () => {
   const dispatch = useDispatch();
   return (
-    <FormLabel>
+    <FormLabel m="20px 0" textAlign="center">
       Find contacts by name
       <Input
-        // _placeholder={{
-        //   color: 'var(--chakra-colors-teal-500)',
-        // }}
         placeholder="Enter name"
         type="text"
         name="name"

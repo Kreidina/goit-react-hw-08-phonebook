@@ -5,9 +5,6 @@ export const RegistretedRoute = ({
   component: Component,
   redirectTo = '/',
 }) => {
-  console.log(Component, 'com');
-  console.log(redirectTo, 'red');
-
   const { isLoggedIn } = useAuth();
   return isLoggedIn ? <Navigate to={redirectTo} /> : <Component />;
 };
