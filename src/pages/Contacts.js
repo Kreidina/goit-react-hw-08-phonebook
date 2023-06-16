@@ -7,6 +7,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 
 const Contacts = () => {
   const dispatch = useDispatch();
+console.log('contats');
 
   useEffect(() => {
     dispatch(fetchContacts());
