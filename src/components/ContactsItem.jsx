@@ -45,11 +45,6 @@ const ContactsItem = ({ name, number, id }) => {
         ml="auto"
         type="button"
         onClick={() => dispatch(deleteContacts(id))}
-        // sx={{
-        //   '@media screen and (max-width: 480px)': {
-        //     h: 'var(--chakra-sizes-6)',
-        //   },
-        // }}
       >
         Delete
       </Button>

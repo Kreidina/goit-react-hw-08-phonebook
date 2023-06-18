@@ -1,4 +1,12 @@
 import {
+  fulfilledCurrent,
+  fulfilledLogout,
+  handelFulfilled,
+  handelPending,
+  handelRejected,
+  rejectedCurrent,
+} from './functions';
+import {
   fetchCreateUser,
   fetchCurrentUser,
   fetchLogin,
@@ -12,6 +20,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   isRefreshing: false,
+  error: null,
 };
 
 const arrayThunks = [
@@ -21,35 +30,6 @@ const arrayThunks = [
   fetchCurrentUser,
 ];
 
-const handelPending = state => {
-  state.isLoading = true;
-};
-
-const handelRejected = state => {
-  state.isLoading = false;
-};
-const handelFulfilled = (state, { payload }) => {
-  state.isLoading = false;
-  state.user = payload.user;
-  state.token = payload.token;
-  state.isLoggedIn = true;
-};
-
-const fulfilledLogout = state => {
-  state.isLoading = false;
-  state.isLoggedIn = false;
-  state.isRefreshing = false;
-  state.user = {};
-  state.token = '';
-};
-
-const fulfilledCurrent = (state, { payload }) => {
-  state.isLoading = false;
-  state.isLoggedIn = true;
-  state.isRefreshing = true;
-  state.user = payload;
-};
-
 const authSliсe = createSlice({
   name: 'auth',
   initialState,
@@ -57,7 +37,20 @@ const authSliсe = createSlice({
     arrayThunks.forEach(fetch => {
       builder
         .addCase(fetch.pending, handelPending)
-        .addCase(fetch.rejected, handelRejected)
+        .addCase(fetch.rejected, (state, action) => {
+          switch (fetch) {
+            case fetchUserLogout:
+            case fetchLogin:
+            case fetchCreateUser:
+              handelRejected(state, action);
+              break;
+            case fetchCurrentUser:
+              rejectedCurrent(state, action);
+              break;
+            default:
+              break;
+          }
+        })
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
             case fetchCreateUser:

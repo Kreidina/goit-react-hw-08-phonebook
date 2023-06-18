@@ -3,7 +3,6 @@ import Layout from './Layout';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
-// import { useAuth } from 'hooks';
 import { RegistretedRoute } from './RegistretedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Box } from '@chakra-ui/react';

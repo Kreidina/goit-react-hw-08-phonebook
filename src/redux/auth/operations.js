@@ -34,14 +34,14 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const fetchCreateUser = createAsyncThunk(
   'user/createUser',
-  async (credentials,thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
       return data;
     } catch (e) {
       console.log(e.message);
-       return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue('error signup');
     }
   }
 );
@@ -55,7 +55,7 @@ export const fetchLogin = createAsyncThunk(
       return data;
     } catch (e) {
       console.log(e.message);
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue('error login');
     }
   }
 );

@@ -1,29 +1,22 @@
 import {
+  Box,
   Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
 } from '@chakra-ui/react';
-import {  Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { Field, Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCreateUser } from 'redux/auth/operations';
-// import { object, string } from 'yup';
+import { selectError } from 'redux/auth/selectors';
 
-// const schema = object({
-//   name: string().required(),
-//   email: string().email().required(),
-//   password: string().min(8).required(),
-// });
-import * as Yup from 'yup';
+import { object, string } from 'yup';
 
-const schema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().min(8).required('Required'),
+const schema = object().shape({
+  name: string().required('*required'),
+  email: string().email('Invalid email').required('*required'),
+  password: string().min(8).required('*required'),
 });
 
 const initialValues = {
@@ -34,6 +27,7 @@ const initialValues = {
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
 
   const submitRegistration = (value, { resetForm }) => {
     dispatch(
@@ -51,44 +45,74 @@ const RegisterForm = () => {
         onSubmit={submitRegistration}
         validationSchema={schema}
       >
-        {() => (
+        {props => (
           <Form>
+            {error === 'error signup' && (
+              <Box
+                color=" red"
+                textAlign=" center"
+                boxShadow="base"
+                rounded="md"
+                borderRadius="15px"
+                m="10px 0"
+                p="5px 0"
+              >
+                You have entered an invalid email address or a user with this
+                email address is already registered
+              </Box>
+            )}
             <Field name="name">
               {({ field, form }) => (
                 <FormControl isInvalid={form.errors.name && form.touched.name}>
                   <FormLabel>User name</FormLabel>
-                  <Input {...field} type="text" placeholder="Enter name" />
                   <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                  <Input
+                    {...field}
+                    type="text"
+                    placeholder="Enter name"
+                    autoComplete="off"
+                  />
                 </FormControl>
               )}
             </Field>
             <Field name="email">
               {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
+                <FormControl
+                  isInvalid={form.errors.email && form.touched.email}
+                >
                   <FormLabel>Email</FormLabel>
-                  <Input {...field} type="email" placeholder="Enter email" />
-                  <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-
-                  {/* <ErrorMessage name="email" component="div" /> */}
+                  <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder="Enter email"
+                    autoComplete="off"
+                  />
                 </FormControl>
               )}
             </Field>
             <Field name="password">
               {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
+                <FormControl
+                  isInvalid={form.errors.password && form.touched.password}
+                >
                   <FormLabel>Password</FormLabel>
+                  <FormErrorMessage>{form.errors.password}</FormErrorMessage>
                   <Input
                     {...field}
                     type="password"
                     placeholder="Enter password"
+                    autoComplete="off"
                   />
-                  <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-
-                  {/* <ErrorMessage name="password" component="div" /> */}
                 </FormControl>
               )}
             </Field>
-            <Button mt={4} colorScheme="teal" type="submit">
+            <Button
+              mt={4}
+              colorScheme="teal"
+              type="submit"
+              disabled={!props.isValid}
+            >
               Submit
             </Button>
           </Form>

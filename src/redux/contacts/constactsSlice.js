@@ -1,42 +1,19 @@
-const { createSlice } = require('@reduxjs/toolkit');
-const {
-  fetchContacts,
-  addNewContact,
-  deleteContacts,
-} = require('./operations');
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  fulfilledAdd,
+  fulfilledDelete,
+  fulfilledFetch,
+  handelPending,
+  handelRejected,
+} from './functions';
+import { addNewContact, deleteContacts, fetchContacts } from './operations';
 
 const initialState = {
   items: [],
   isLoading: false,
-  error: '',
 };
 
 const arrayThunks = [fetchContacts, addNewContact, deleteContacts];
-
-const handelPending = state => {
-  state.isLoading = true;
-};
-
-const handelRejected = state => {
-  state.isLoading = false;
-};
-
-const fulfilledFetch = (state, { payload }) => {
-  state.isLoading = false;
-  state.items = payload;
-  state.error = '';
-};
-const fulfilledAdd = (state, { payload }) => {
-  state.isLoading = false;
-  state.items.push(payload);
-  state.error = '';
-};
-
-const fulfilledDelete = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = '';
-  state.items = state.items.filter(item => item.id !== payload.id);
-};
 
 const contactsSlice = createSlice({
   name: 'contacts',

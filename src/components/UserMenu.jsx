@@ -18,7 +18,16 @@ const UserMenu = () => {
           },
         }}
       >
-        <Box display="flex" alignItems="center" m="4px 0 8px">
+        <Box
+          display="flex"
+          alignItems="center"
+          m="4px 0 8px"
+          sx={{
+            '@media screen and (max-width: 480px)': {
+              maxW: '200px',
+            },
+          }}
+        >
           <Avatar
             w="30px"
             h="30px"
@@ -26,13 +35,20 @@ const UserMenu = () => {
             name={user.name}
             src="https://bit.ly/broken-link"
           />
-          <Text fontFamily="Courgette, cursive">Welcome, {user.name}</Text>
+          <Text fontSize=" larger" fontFamily="Courgette, cursive">
+            Welcome, {user.name}
+          </Text>
         </Box>
         <Button
           colorScheme="teal"
           h="var(--chakra-sizes-7)"
           ml="10px"
           onClick={() => dispatch(fetchUserLogout())}
+          sx={{
+            '@media screen and (max-width: 480px)': {
+              m: '0 30px',
+            },
+          }}
         >
           Log out
         </Button>

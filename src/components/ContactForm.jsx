@@ -1,8 +1,30 @@
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { addNewContact } from 'redux/contacts/operations';
 import { Field, Form, Formik } from 'formik';
+import { object, string } from 'yup';
+
+const schema = object().shape({
+  name: string()
+    .matches(
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      'Invalid name'
+    )
+    .required(),
+  number: string()
+    .matches(
+      /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
+      'Invalid phone number'
+    )
+    .required(),
+});
 
 const initialValues = {
   name: '',
@@ -24,32 +46,40 @@ const ContactForm = () => {
 
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={submitContact}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={submitContact}
+        validationSchema={schema}
+      >
         {props => (
           <Form>
-            <Field
-              name="name"
-
-              // validate={validateName}
-            >
+            <Field name="name">
               {({ field, form }) => (
-                <FormControl
-                // isInvalid={form.errors.name && form.touched.name}
-                >
+                <FormControl isInvalid={form.errors.name && form.touched.name}>
                   <FormLabel>Name</FormLabel>
-                  <Input {...field} type="text" placeholder="Enter name" />
-                  {/* <FormErrorMessage>{form.errors.name}</FormErrorMessage> */}
+                  <FormErrorMessage>{form.touched.name}</FormErrorMessage>
+                  <Input
+                    {...field}
+                    type="text"
+                    placeholder="Enter name"
+                    autoComplete="off"
+                  />
                 </FormControl>
               )}
             </Field>
-            <Field
-              name="number"
-              // validate={validateName}
-            >
-              {({ field }) => (
-                <FormControl>
+            <Field name="number">
+              {({ field, form }) => (
+                <FormControl
+                  isInvalid={form.errors.number && form.touched.number}
+                >
                   <FormLabel>Number</FormLabel>
-                  <Input {...field} type="tel" placeholder="Enter phone" />
+                  <FormErrorMessage>{form.touched.number}</FormErrorMessage>
+                  <Input
+                    {...field}
+                    type="tel"
+                    placeholder="Enter phone"
+                    autoComplete="off"
+                  />
                 </FormControl>
               )}
             </Field>
@@ -62,6 +92,7 @@ const ContactForm = () => {
                   h: 'var(--chakra-sizes-8)',
                 },
               }}
+              disabled={!props.isValid}
             >
               Add contact
             </Button>
