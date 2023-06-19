@@ -4,12 +4,14 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  useToast,
 } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNewContact } from 'redux/contacts/operations';
 import { Field, Form, Formik } from 'formik';
 import { object, string } from 'yup';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const schema = object().shape({
   name: string()
@@ -33,8 +35,37 @@ const initialValues = {
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const toast = useToast();
 
   const submitContact = (value, { resetForm }) => {
+    if (
+      contacts.some(
+        contact => contact.name.toLowerCase() === value.name.toLowerCase()
+      )
+    )
+      return toast({
+        title: 'Contact already exists',
+        description: `contact with name: ${value.name} is already present in contacts`,
+        status: 'info',
+        duration: 3000,
+        isClosable: true,
+        position: 'top-right',
+      });
+
+    if (
+      contacts.some(
+        contact => contact.number.toLowerCase() === value.number.toLowerCase()
+      )
+    )
+      return toast({
+        title: 'Contact already exists',
+        description: `contact with number: ${value.number} is already present in contacts`,
+        status: 'info',
+        duration: 3000,
+        isClosable: true,
+        position: 'top-right',
+      });
     dispatch(
       addNewContact({
         ...value,
